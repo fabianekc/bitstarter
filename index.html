@@ -145,7 +145,9 @@
       </div>
       <div class="row-fluid pitch">
         <div class="span5 offset1 video">
-          <img class="img-polaroid" src="http://placehold.it/480x300">
+          <div class="img-polaroid">
+            <iframe width="455" height="282" src="//www.youtube.com/embed/DxQnJy-KxKw" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
 
         <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
@@ -157,12 +159,12 @@
                 different in horizontal and vertical layouts, illustrating
                 media queries. -->
                 <div class="linediv-l">
-                <h3>1000</h3> <p>backers</p>
+                <h3>37</h3> <p>of 600 <i class="icon-thumbs-up"></i></p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3>$6000</h3> <p>of $10,000</p>
+                  <h3>2 / 100</h3> <p>Projects</p>
                 </div>
               </div>
               <div class="span4">
@@ -183,13 +185,13 @@
           <div class="span6 offset3 order">
             <!-- Standard Bootstrap button. -->
             <!-- http://twitter.github.io/bootstrap/base-css.html#buttons -->
-            <button class="btn btn-success btn-large">Preorder</button>
+            <button class="btn btn-success btn-large">Sign-up</button>
           </div>
           <div class="span8 offset2 social">
             <!-- Social buttons are not included in default Bootstrap. -->
             <!-- See: http://noizwaves.github.io/bootstrap-social-buttons -->
-            <button class="btn btn-twitter"><i class="icon-twitter"></i> | Twitter</button>
-            <button class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</button>
+            <button class="btn btn-twitter" onclick="window.open('https://twitter.com/HyveInfo', '_self')"><i class="icon-twitter"></i> | Twitter</button>
+            <button class="btn btn-facebook" onclick="window.open('https://www.facebook.com/Hyve.me', '_self')"><i class="icon-facebook"></i> | Facebook</button>
           </div>
         </div>
       </div>
@@ -199,44 +201,22 @@
       <!-- http://twitter.github.io/bootstrap/base-css.html#images -->
       <!-- http://placehold.it -->
       <div class="row-fluid section1">
-        <div class="span5 offset1 asset">
-          <img class="img-polaroid" src="http://placehold.it/480x300">
+        <div class="span5 offset1 asset text-center">
+          <a href="http://hyve.me"><img class="img-polaroid" width="460" height="290" src="https://s3-eu-west-1.amazonaws.com/hyve/start.png"></a>
         </div>
         <div class="span5 copy">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu
-            mollis justo velit at nunc. Fusce nec egestas sem. Donec
-            fringilla ante lectus, a pellentesque lacus dignissim ac. Sed
-            volutpat lorem ut congue malesuada. In facilisis scelerisque
-            turpis sed lacinia. Donec in orci lectus. Donec auctor semper
-            quam, eget rhoncus purus fringilla id. Phasellus id nibh eu
-            risus ultrices adipiscing.  Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Donec porta, dui sagittis hendrerit
-            rutrum, nunc leo tempus nisl, eu mollis justo velit at
-            nunc. Fusce nec egestas sem. Donec fringilla.
-          </p>
+          <p>The internet enables corporations to gather huge amounts of everyone's data to tailor ads, news, and search results. This is commonly referred to as 'Big Data' and was for some time only accessible to large companies like Google, Amazon, or Facebook. However, it is your right to access and use this data for your own benefit!</p>
+          <p>Hyve.me challenges todays assumption that it requires a group of experts and lots of money to make sense out of data. We have broken down the process of data analysis and tackle now all questions relevant for individuals using Big Data.</p>
         </div>
       </div>
 
       <div class="row-fluid section2">
         <div class="span5 offset1 copy copy-right">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu
-            mollis justo velit at nunc. Fusce nec egestas sem. Donec
-            fringilla ante lectus, a pellentesque lacus dignissim ac. Sed
-            volutpat lorem ut congue malesuada. In facilisis scelerisque
-            turpis sed lacinia. Donec in orci lectus. Donec auctor semper
-            quam, eget rhoncus purus fringilla id. Phasellus id nibh eu
-            risus ultrices adipiscing.  Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Donec porta, dui sagittis hendrerit
-            rutrum, nunc leo tempus nisl, eu mollis justo velit at
-            nunc. Fusce nec egestas sem. Donec fringilla.
-          </p>
+          <p>Think of Hyve.me as what did Linus Torvalds and the Linux community to operating systems. 20 years ago there were only a few major players who covered the market with proprietary software. With Hyve.me we want to create the same effect for data: Everybody should have access to his or her data and process it in whatever way intended. There should be an open market and competition between the best algorithms and visualization methods - and Hyve.me will provide the infrastructure.</p>
+          <p>However, to succeed we need to overcome the <a href="http://en.wikipedia.org/wiki/Network_effect">network effect</a>: as more users join the service the more benefits it generates for the overall community.</p>
         </div>
-        <div class="span5 asset">
-          <img class="img-polaroid" src="http://placehold.it/480x300">
+        <div class="span5 asset text-center">
+          <img class="img-polaroid" width="460" height="340" src="https://s3-eu-west-1.amazonaws.com/hyve/graph.png">
         </div>
       </div>
 
@@ -246,17 +226,18 @@
       <div class="row-fluid faq">
           <div class="span10 offset1">
             <h3>FAQ</h3>
+            <p><small>There are a number of challenges to deal with when working on Big Data for individuals and here are answers to some of the questions you might have:</small></p>
             <div class="accordion" id="accordion2">
               <div class="accordion-group">
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseOne">
-                    What does FAQ stand for?
+                    What data is significant and provides valuable insight?
                   </a>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Frequently Asked Question.
+                    Hyve.me automatically shows similar projects and you can check what data is collected by others.
                   </div>
                 </div>
               </div>
@@ -264,15 +245,95 @@
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseTwo">
-                    What's a Frequently Asked Question?
+                    Where does the relevant data come from and how to get it?
                   </a>
                 </div>
                 <div id="collapseTwo" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    A question which is commonly asked by users.
+                    It is the goal to automatically import all your data that is stored by 3rd parties about you. Currently, only manual entry and <a href="http://www.hyve.me/en/email">data collection via email</a> is available.
                   </div>
                 </div>
               </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseThree">
+                    Where and how to store data securly?
+                  </a>
+                </div>
+                <div id="collapseThree" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    For now, all your data is stored using <a href="http://aws.amazon.com/">Amazon Web Services</a>. In the near future you will be able to choose your storage provider.
+It is also planned to provide the option for storing your data only locally on your PC and all processing will run locally.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseFour">
+                    Who can see and access data?
+                  </a>
+                </div>
+                <div id="collapseFour" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Every user will be able to define who can access what data. Right now the default level is defined that everybody can see what you are tracking (i.e., the attributes) but not the data itself.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseFive">
+                    How to aggregate data from users while maintaining full privacy?
+                  </a>
+                </div>
+                <div id="collapseFive" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Hyve.me proposes an architecture and a protocol for secure and anonymous data exchange between users. This will enable every user to run statistical analysis without disclosing his or her own data.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseSix">
+                    How to process the data?
+                  </a>
+                </div>
+                <div id="collapseSix" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    While Hyve.me will provide a basic set of analysis tools, it will also provide an open market for algorithms. There, data analysis experts can upload various implementations for specific fields, and users can choose from the available offerings.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseSeven">
+                    How to interprete raw data and results of processed data?
+                  </a>
+                </div>
+                <div id="collapseSeven" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    As with algorithms there is a basic set of graphical representation of your data available on Hyve.me. For more sophisticated visualizations an open market will bring together visualization experts and users.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseEight">
+                    How to assess the value of data in case you want to buy, sell, or trade data?
+                  </a>
+                </div>
+                <div id="collapseEight" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Eventually, it is the goal of Hyve.me to provide a platform for trading data. Even if you don't plan to sell some of your data, this is the place to find the market value of the information you possess.
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
