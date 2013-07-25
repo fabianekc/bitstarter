@@ -62,9 +62,17 @@
          padding: 0 70px;
          margin-top: 10px;
        }
+       .carousel-caption-center {
+         width: 100%
+         padding: 0 70px;
+         margin-top: 10px;
+       }
+       .carousel-caption-center h1,
        .carousel-caption h1 {
          font-size: 20px;
        }
+       .carousel-caption-center .lead,
+       .carousel-caption-center .btn,
        .carousel-caption .lead,
        .carousel-caption .btn {
          font-size: 18px;
@@ -166,13 +174,22 @@
 				padding: 0 10%;
 				margin-top: 60px;
 			}
+                        .carousel-caption-center {
+                                background-color: transparent;
+                                position: static;
+                                padding: 0 10%;
+                                margin-top: 60px;
+                        }
+                        .carousel-caption-center h1,
+                        .carousel-caption-center .lead,
 			.carousel-caption h1,
 			.carousel-caption .lead {
 				margin: 0;
 				line-height: 1.25;
 				color: #fefefe;
-				text-shadow: 0 1px 1px rgba(0,0,0,.4);
+                                text-shadow: -1px 0 rgba(0,0,0,.6), 0 1px rgba(0,0,0,.6), 1px 0 rgba(0,0,0,.6), 0 -1px rgba(0,0,0,.6);
 			}
+                        .carousel-caption-center .btn,
 			.carousel-caption .btn {
 				margin-top: 10px;
 			}
@@ -183,8 +200,17 @@
       }
       $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
         e.stopPropagation();
-      });	
+      });
     </script>
+<script>
+$(function() {
+    $('.carousel').each(function(){
+        $(this).carousel({
+            interval: false
+        });
+    });
+});
+</script>
   </head>
   <body>
 
@@ -237,9 +263,8 @@
 			<div class="container">
 				<div class="carousel-caption">
 					<h1>Digital Age</h1>
-					<p class="lead">
-						Everybody of us generates an enormous amount of data: However, the main beneficiaries of this information are corporations and governments.
-					</p>
+					<p class="lead">Everybody of us generates an enormous amount of data: However, the main beneficiaries of this information are corporations and governments.</p>
+                                        <a class="btn btn-large btn-primary pull-right" href="http://en.wikipedia.org/wiki/2013_mass_surveillance_disclosures">Read more</a>
 				</div>
 			</div>
 		</div>
@@ -248,11 +273,8 @@
 			<div class="container">
 				<div class="carousel-caption">
 					<h1>It's Your Data</h1>
-					<p class="lead">
-						Start collecting your data for your own benefit: Use Hyve.me to create a local copy of your digital life.
-					</p>
-<!--					<a class="btn btn-large btn-primary"
-						onclick="scrollTo('#datacollection')">Data Collection</a> -->
+					<p class="lead">Start collecting your data for your own benefit:<br>Use Hyve.me to create a local copy of your digital life.</p>
+					<a class="btn btn-large btn-primary pull-right" onclick="scrollTo('#datacollection')">Learn how</a>
 				</div>
 			</div>
 		</div>
@@ -261,22 +283,21 @@
 			<div class="container">
 				<div class="carousel-caption">
 					<h1>Analyze and Compare</h1>
-					<p class="lead">
-						Use sophisticated algorithms and crowd intelligence: Hyve.me provides a market for data analysis tools and mechanisms to compare data anonymously.
-					</p>
-<!--					<a class="btn btn-large btn-primary" onclick="scrollTo('#learn-more')">Learn more</a> -->
+					<p class="lead">Use sophisticated algorithms and crowd intelligence: Hyve.me provides a market for data analysis tools and mechanisms to compare data anonymously.</p>
+					<a class="btn btn-large btn-primary pull-right" onclick="scrollTo('#algorithm')">Show me</a>
 				</div>
 			</div>
 		</div>
 		<div class="item">
 			<img src="https://s3-eu-west-1.amazonaws.com/hyve/page4.jpg" alt="">
 			<div class="container">
-				<div class="carousel-caption">
-					<h1>Visualize and Learn</h1>
-					<p class="lead">
-						Get insight and make well founded decisions: With Hyve.me you identify pivotal elements in your projects to head for success.
-					</p>
-<!--				<a class="btn btn-large btn-primary" onclick="scrollTo('#learn-more')">Learn more</a> -->
+				<div class="carousel-caption-center">
+				<h1 style="margin-top: 120px;" align="center">Visualize and Learn</h1>
+					<p class="lead" align="center">
+                                          Get insight and make well founded decisions:<br>
+                                          With Hyve.me you identify pivotal elements<br>
+                                          in your projects to head for success.</p>
+				<p class="text-center"><a class="btn btn-large btn-primary" href="http://hyve.me">Sign up!</a></p>
 				</div>
 			</div>
 		</div>
