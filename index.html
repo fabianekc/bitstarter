@@ -255,13 +255,7 @@ $(function() {
       </div>
     </div>
 
-    <!-- We use row-fluid inside containers to achieve a resizable layout. -->
-    <!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
-    <!-- http://stackoverflow.com/a/12270322 -->
     <div class="container">
-      <!-- Font and paired font of .heading/.subheading and body from Google Fonts -->
-      <!-- www.google.com/fonts/specimen/Ubuntu -->
-      <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
       <div class="row-fluid heading">
         <div class="span12">
           <h1>Hyve.me</h1>
@@ -269,8 +263,6 @@ $(function() {
       </div> 
       <div class="row-fluid subheading">
         <div class="span12">
-          <!-- Special typography from Bootstrap for lead paragraph. -->
-          <!-- http://twitter.github.io/bootstrap/base-css.html#typography -->
           <p class="lead">Optimize your projects!</p>
         </div>
       </div>
@@ -325,9 +317,43 @@ $(function() {
 </div>
       <div class="row-fluid pitch">
         <div class="span5 offset1 copy copy-right">
-          <p>This page tests the market potential of <a href="http://hyve.me">Hyve.me</a>: We have set the goal to reach 600 mentions in social forums until September 8th, 2013. The dashboard on the right shows how we are doing.</p>
+          <p>This page tests the market potential of <a href="http://hyve.me">Hyve.me</a>: We have set the goal to reach 600 mentions in social forums until October 31st, 2013. The dashboard on the right shows how we are doing.</p>
           <p>For a detailed description of Hyve.me read about <a href="/usecases">use cases from a user's perspective</a>. There is also specific information available for <a href="/developers">developers</a> and <a href="/investors">investors</a>.</p>
         </div>
+
+<script>
+
+    CountDownTimer('10/31/2013 11:59 PM', 'countdown');
+
+
+    function CountDownTimer(dt, id)
+    {
+        var end = new Date(dt);
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+    function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                           clearInterval(timer);
+                document.getElementById(id).innerHTML = 'EXPIRED!';
+
+                           return;
+            }
+            var days = Math.floor(distance / _day);
+
+            document.getElementById(id).innerHTML = days;
+        }
+
+                           timer = setInterval(showRemaining, 1000);
+    }
+
+</script>
 
         <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
         <div class="span5 actions">
@@ -339,17 +365,17 @@ $(function() {
                 different in horizontal and vertical layouts, illustrating
                 media queries. -->
                 <div class="linediv-l">
-                <h3>38</h3> <p>of 600 <i class="icon-thumbs-up"></i></p>
+                <h3>40</h3> <p>of 600 <i class="icon-thumbs-up"></i></p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3>23</h3> <p>Hyve-Users</p>
+                  <h3>27</h3> <p>Hyve-Users</p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-r">
-                <h3>30</h3> <p>days left</p>
+                <h3 id="countdown"></h3> <p>days left</p>
                 </div>
               </div>
             </div>
@@ -422,7 +448,7 @@ $(function() {
       <div class="row-fluid section4">
         <div class="hero-unit span10 offset1 copy">
           <p class="lead text-center">If you are interested, visit our <a href="http://hyve.me">preview of Hyve.me</a> and <a href="https://www.facebook.com/Hyve.me">like</a> / <a href="https://plus.google.com/115523021927594181806">+1</a> / <a href="https://twitter.com/HyveInfo">tweet</a> it. <i class="icon-flag icon-large"></i></p>
-          <p class="lead text-center"><i class="icon-lightbulb icon-large"></i>&nbsp; Reaching 600 mentions by September 8th, 2013 will give us the confidence to push Hyve.me forward into a public beta.</p>
+          <p class="lead text-center"><i class="icon-lightbulb icon-large"></i>&nbsp; Reaching 600 mentions by October 31st, 2013 will give us the confidence to push Hyve.me forward into a public beta.</p>
         </div>
       </div>
 
@@ -438,12 +464,12 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseOne">
-                    How do you optimize projects and identify relevant data?
+                    Why should I use Hyve.me?
                   </a>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Hyve.me automatically shows similar projects based on your project categorization. Learning from metrics used by others you can also get a new perspective on your endeavour. We call this "from vanity metrics to valuable insight".
+                    There is a huge potential in data you generate every day. Leverage this information to optimize your decisions and gain new insight about yourself!
                   </div>
                 </div>
               </div>
@@ -451,12 +477,17 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseTwo">
-                    Where does the relevant data come from and how to get it?
+                    Is my data safe from unauthorized access?
                   </a>
                 </div>
                 <div id="collapseTwo" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    It is the goal to automatically import all your data that is stored by 3rd parties about you. Currently, manual entry and <a href="http://www.hyve.me/en/email">data collection via email</a> is available.
+                    Hyve.me provides 3 different ways to store your data and you choose the safest, most comfortable, and reliable solution for your needs:
+                    <ul>
+                      <li>using Hyve.me online storage, or</li>
+                      <li>use any other trusted storage provider through an open API, or</li>
+                      <li>store your data on your local computer.</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -464,12 +495,12 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseThree">
-                    Where and how to store data securely?
+                    What is Big Data?
                   </a>
                 </div>
                 <div id="collapseThree" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    For now, all your data is stored using <a href="http://aws.amazon.com/">Amazon Web Services</a>. In the near future you will be able to choose your storage provider. It is also planned to provide the option for storing your data only on a device you trust (e.g., your PC at home) and all processing will be performed there.
+                    "Big Data is any data that is expensive to manage and hard to extract value from." by Michael Franklin; you can also read more about it on <a href="http://en.wikipedia.org/wiki/Big_data">Wikipedia</a>.
                   </div>
                 </div>
               </div>
@@ -477,12 +508,17 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseFour">
-                    Who can see and access data?
+                    Why is <em>Big Data for Individuals</em> different to <em>Big Data</em>?
                   </a>
                 </div>
                 <div id="collapseFour" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Every user will be able to define who can access what data. Right now the default level is defined that everybody can see what you are tracking (i.e., the attributes) but not the data itself.
+                    There are 3 main differences between Big Data commonly used in corporations and Big Data for Individuals:
+                    <ol>
+                      <li>Initially, individuals don't have much data or don't know how to access their data - Hyve.me helps you identify your data sources and how to access them.</li>
+                      <li>It is difficult for a private person to store and manage large amounts of data - Hyve.me offers mechanisms to store and manage your data in a secure and easy way.</li>
+                      <li>Big Data processing and visualization of results is performed by a team of expert data analysts usually not available to a single person - Hyve.me provides a market to give you access to available algorithms and visualization tools.</li>
+                    </ol>
                   </div>
                 </div>
               </div>
@@ -490,12 +526,12 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseFive">
-                    How to aggregate data from users while maintaining full privacy?
+                    How are projects optimized with Hyve.me?
                   </a>
                 </div>
                 <div id="collapseFive" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Hyve.me proposes an architecture and a protocol for secure and anonymous data exchange between users. This will enable every user to run statistical analysis without disclosing his or her own data. This is the main area of development right now.
+                    Hyve.me proposes specific data to be collect for valuable metrics on your project based on similar other projects. This data can then be processed with tools on a Big Data market place also hosted by Hyve.me.
                   </div>
                 </div>
               </div>
@@ -503,12 +539,12 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseSix">
-                    How to process the data?
+                    Where does the relevant data come from?
                   </a>
                 </div>
                 <div id="collapseSix" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    While Hyve.me will provide a basic set of analysis tools, it will also provide an open market for algorithms. There, data analysis experts can upload various implementations for specific fields, and users can choose from the available offerings.
+                    You can import data that is stored by 3rd parties about you as well as use other data collection mechanisms.
                   </div>
                 </div>
               </div>
@@ -516,12 +552,12 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseSeven">
-                    How to interpret raw data and results of processed data?
+                    How does Hyve.me aggregate data while maintaining full privacy for users?
                   </a>
                 </div>
                 <div id="collapseSeven" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    As with algorithms there is a basic set of graphical representation of your data available on Hyve.me. For more sophisticated visualizations an open market will bring together visualization experts and users.
+                    Hyve.me proposes an architecture and a protocol for secure and anonymous data exchange between users. This will enable every user to run statistical analysis without disclosing his or her own data.
                   </div>
                 </div>
               </div>
@@ -529,12 +565,25 @@ $(function() {
                 <div class="accordion-heading">
                   <a class="accordion-toggle" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseEight">
-                    How to assess the value of data in case you want to buy, sell, or trade data?
+                    Which algorithms and data visualization tools are available?
                   </a>
                 </div>
                 <div id="collapseEight" class="accordion-body collapse">
                   <div class="accordion-inner">
-                    Eventually, it is the goal of Hyve.me to provide a platform for trading personal data. Even if you don't plan to sell some of your data, this is the place to find the market value of the information you possess.
+                    While Hyve.me will provide a basic set of analysis and visualization tools, it will also provide an open market for algorithms and statistical analysis. There, data analysis experts can upload various implementations for specific fields, and users can choose from the available offerings.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseNine">
+                    How to assess the value of data in case I want to buy, sell, or trade data?
+                  </a>
+                </div>
+                <div id="collapseNine" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Eventually, it is the goal of Hyve.me to provide a platform for trading personal data. Even if you don't plan to sell some of your data, this is the place to find the market value of information you possess.
                   </div>
                 </div>
               </div>
