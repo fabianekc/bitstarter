@@ -367,6 +367,9 @@ $(window).bind("load", function() {
          document.getElementById("usercount").innerHTML = data;
     }
   });
+  $.getJSON("https://graph.facebook.com/?ids=hyve.me", function(response) {
+    document.getElementById("facebooklikes").innerHTML = response["hyve.me"].likes;
+  });
 });
 </script>
 
@@ -380,17 +383,17 @@ $(window).bind("load", function() {
                 different in horizontal and vertical layouts, illustrating
                 media queries. -->
                 <div class="linediv-l">
-                <h3>40</h3> <p>of 600 <i class="icon-thumbs-up"></i></p>
+                <h3 id="facebooklikes">0</h3> <p>FB <i class="icon-thumbs-up"></i></p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3 id="usercount"></h3> <p>Hyve-Users</p>
+                  <h3 id="usercount">0</h3> <p>Hyve-Users</p>
                 </div>
               </div>
               <div class="span4">
                 <div class="linediv-r">
-                <h3 id="countdown"></h3> <p>days left</p>
+                <h3 id="countdown">0</h3> <p>days left</p>
                 </div>
               </div>
             </div>
