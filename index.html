@@ -348,11 +348,26 @@ $(function() {
             var days = Math.floor(distance / _day);
 
             document.getElementById(id).innerHTML = days;
+            document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (100-days).toString() +"%;");
+            document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + days.toString() +"%;");
         }
 
                            timer = setInterval(showRemaining, 1000);
     }
 
+</script>
+
+<script>
+$(window).bind("load", function() {
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.hyve.me/usercount',
+    dataType: 'JSON',
+    success: function(data) {
+         document.getElementById("usercount").innerHTML = data;
+    }
+  });
+});
 </script>
 
         <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
@@ -370,7 +385,7 @@ $(function() {
               </div>
               <div class="span4">
                 <div class="linediv-c">
-                  <h3>27</h3> <p>Hyve-Users</p>
+                  <h3 id="usercount"></h3> <p>Hyve-Users</p>
                 </div>
               </div>
               <div class="span4">
@@ -385,8 +400,8 @@ $(function() {
             <!-- Bootstrap progress bar -->
             <!-- http://twitter.github.io/bootstrap/components.html#progress -->
             <div class="thermometer progress active">
-              <div class="bar bar-success" style="width: 60%;"></div>
-              <div class="bar bar-warning" style="width: 40%;"></div>
+              <div class="bar bar-success" style="width: 60%;" id="myProgressBar_Success"></div>
+              <div class="bar bar-warning" style="width: 40%;" id="myProgressBar_Warning"></div>
             </div>
           </div>
           </div>
