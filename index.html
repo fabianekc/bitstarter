@@ -348,10 +348,8 @@ $(function() {
             var days = Math.floor(distance / _day);
 
             document.getElementById(id).innerHTML = days;
-            document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (100-days).toString() +"%;");
-            document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + days.toString() +"%;");
-        }
 
+}
                            timer = setInterval(showRemaining, 1000);
     }
 
@@ -368,7 +366,14 @@ $(window).bind("load", function() {
     }
   });
   $.getJSON("https://graph.facebook.com/?ids=hyve.me", function(response) {
-    document.getElementById("facebooklikes").innerHTML = response["hyve.me"].likes;
+    var fbl = response["hyve.me"].likes;
+    document.getElementById("facebooklikes").innerHTML = fbl;
+  });
+  $.getJSON("https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F", function(response) {
+    var mentions = response.shares;
+    document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions/6).toString() +"%;");
+    document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600-mentions)/6).toString() +"%;");
+    document.getElementById("usercount").innerHTML = mentions;
   });
 });
 </script>
@@ -403,8 +408,8 @@ $(window).bind("load", function() {
             <!-- Bootstrap progress bar -->
             <!-- http://twitter.github.io/bootstrap/components.html#progress -->
             <div class="thermometer progress active">
-              <div class="bar bar-success" style="width: 60%;" id="myProgressBar_Success"></div>
-              <div class="bar bar-warning" style="width: 40%;" id="myProgressBar_Warning"></div>
+              <div class="bar bar-success" style="width: 1%;" id="myProgressBar_Success"></div>
+              <div class="bar bar-warning" style="width: 99%;" id="myProgressBar_Warning"></div>
             </div>
           </div>
           </div>
