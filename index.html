@@ -321,110 +321,61 @@ $(function() {
           <p>For a detailed description of Hyve.me read about <a href="/usecases">use cases from a user's perspective</a>. There is also specific information available for <a href="/developers">developers</a> and <a href="/investors">investors</a>.</p>
         </div>
 
-<script>
+<script type="text/javascript">
+  // Facebook Likes
+  $.getJSON("https://graph.facebook.com/?ids=hyve.me", function (response) {
+    $("#facebooklikes").text(response["hyve.me"].likes);
+  });
 
-    CountDownTimer('10/31/2013 11:59 PM', 'countdown');
-
-
-    function CountDownTimer(dt, id)
-    {
-        var end = new Date(dt);
-        var _second = 1000;
-        var _minute = _second * 60;
-        var _hour = _minute * 60;
-        var _day = _hour * 24;
-        var timer;
-
-    function showRemaining() {
-            var now = new Date();
-            var distance = end - now;
-            if (distance < 0) {
-
-                           clearInterval(timer);
-                document.getElementById(id).innerHTML = 'EXPIRED!';
-
-                           return;
-            }
-            var days = Math.floor(distance / _day);
-
-            document.getElementById(id).innerHTML = days;
-
-}
-                           timer = setInterval(showRemaining, 1000);
+  // registered Users
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.hyve.me/usercount',
+    dataType: 'JSON',
+    success: function (response) {
+      $("#usercount").text = response;
     }
+  });
 
-</script>
-
-<script>
-$(window).bind("load", function () {
-    $.ajax({
-        type: 'GET',
-        url: 'http://www.hyve.me/usercount',
-        dataType: 'JSON',
-        success: function (data) {
-            document.getElementById("usercount").innerHTML = data;
-        }
-    });
-
-    $.getJSON("https://graph.facebook.com/?ids=hyve.me", function (response) {
-        var fbl = response["hyve.me"].likes;
-        document.getElementById("facebooklikes").innerHTML = fbl;
-    });
-
-    $.ajax({
-        type: 'GET',
-        url: 'https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F',
-        dataType: 'JSON',
-        success: function (data) {
-            var mentions = data.shares * 10;
-            document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions / 6).toString() + "%;");
-            document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600 - mentions) / 6).toString() + "%;");
-        }
-    });
-
-    $.getJSON("https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F", function (response) {
-        var mentions = response.shares * 10;
-        document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions / 6).toString() + "%;");
-        document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600 - mentions) / 6).toString() + "%;");
-    });
-});
+  // days left
+  jQuery(document).ready(function($) {
+    today = new Date();
+    deadline = new Date("October 31, 2013");
+    msPerDay = 24 * 60 * 60 * 1000 ;
+    timeLeft = (deadline.getTime() - today.getTime());
+    $("#countdown").text(Math.floor(timeLeft / msPerDay));
+  });
+  
+  // progress bar for mentions
+  $.getJSON("https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F", function (response) {
+    var mentions = response.shares;
+    document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions / 6).toString() + "%;");
+    document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600 - mentions) / 6).toString() + "%;");
+  });
 </script>
 
         <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
         <div class="span5 actions">
           <div class="row-fluid">
-          <div class="span8 offset2">
-            <div class="row-fluid statistics">
-              <div class="span4">
-                <!-- linediv-l and linediv-r give dividing lines that look
-                different in horizontal and vertical layouts, illustrating
-                media queries. -->
-                <div class="linediv-l">
-                <h3 id="facebooklikes">0</h3> <p>FB <i class="icon-thumbs-up"></i></p>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="linediv-c">
-                  <h3 id="usercount">0</h3> <p>Hyve-Users</p>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="linediv-r">
-                <h3 id="countdown">0</h3> <p>days left</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row-fluid">
-          <div class="span10 offset1">
-            <!-- Bootstrap progress bar -->
-            <!-- http://twitter.github.io/bootstrap/components.html#progress -->
-            <div class="thermometer progress active">
-              <div class="bar bar-success" style="width: 1%;" id="myProgressBar_Success"></div>
-              <div class="bar bar-warning" style="width: 99%;" id="myProgressBar_Warning"></div>
-            </div>
-          </div>
-          </div>
+
+
+<div class="span8 offset2">
+  <div class="row-fluid statistics">
+    <div class="span4"><div class="linediv-l"><h3 id="facebooklikes">0</h3><p>FB <i class="icon-thumbs-up"></i></p></div></div>
+    <div class="span4"><div class="linediv-c"><h3 id="usercount">0</h3><p>Hyve-Users</p></div></div>
+    <div class="span4"><div class="linediv-r"><h3 id="countdown">0</h3><p>days left</p></div></div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span10 offset1">
+    <div class="thermometer progress active">
+      <div class="bar bar-success" style="width: 50%;" id="myProgressBar_Success"></div>
+      <div class="bar bar-warning" style="width: 50%;" id="myProgressBar_Warning"></div>
+    </div>
+  </div>
+</div>
+
+
           <div class="row-fluid">
           <div class="span6 offset3 order">
 <a class="coinbase-button" data-code="e734396cec86588da58c653d412ff327" data-button-style="custom_small" href="https://coinbase.com/checkouts/e734396cec86588da58c653d412ff327">Donate Bitcoins</a><script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
