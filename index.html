@@ -370,15 +370,24 @@ $(window).bind("load", function() {
     var fbl = response["hyve.me"].likes;
     document.getElementById("facebooklikes").innerHTML = fbl;
   });
-  
-  new Request.JSONP({
+
+  $.ajax({
+    type: 'GET',
     url: 'https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F',
-    onSuccess: function(response) {
-      var mentions = response.shares*10;
+    dataType: 'JSON',
+    success: function(data) {
+      var mentions = data.shares*10;
       document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions/6).toString() +"%;");
       document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600-mentions)/6).toString() +"%;");
     }
-  }).send();
+  });
+
+  $.getJSON("https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F", function(response) {
+    var mentions = response.shares*10;
+      document.getElementById("myProgressBar_Success").setAttribute('style', "width: " + (mentions/6).toString() +"%;");
+      document.getElementById("myProgressBar_Warning").setAttribute('style', "width: " + ((600-mentions)/6).toString() +"%;");
+    }
+  });
 });
 </script>
 
