@@ -332,7 +332,7 @@ $(function(){
   $.ajax({
     type: 'GET',
     url: 'http://www.hyve.me/usercount',
-    dataType: 'jsonp',
+    dataType: 'json',
     success: function (response) {
       $("#usercount").text(response);
     }
