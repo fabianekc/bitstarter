@@ -323,18 +323,52 @@ $(function() {
 
 <script type="text/javascript">
 $(function(){
+  var likes;
+  var tweets;
+  var shares;
+  var users;
+
   // Facebook Likes
-  $.getJSON("https://graph.facebook.com/?ids=hyve.me", function (response) {
-    $("#facebooklikes").text(response["hyve.me"].likes);
+  $.ajax({
+    async: false,
+    type: 'GET',
+    url: 'https://graph.facebook.com/?ids=hyve.me',
+    dataType: 'json',
+    success: function (response) {
+      likes = parseInt(response["hyve.me"].likes);
+    }
   });
+
+  // Tweets
+  $.ajax({
+    async: false,
+    type: 'GET',
+    url: 'http://urls.api.twitter.com/1/urls/count.json?url=www.hyve.me',
+    dataType: 'json',
+    success: function (response) {
+      tweets = parseInt(response["count"]);
+    }
+  });
+
+  // Shares from AddThis
+  $.ajax({
+       async: false,
+       type: 'GET',
+       url: 'https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F',
+       dataType: 'jsonp',
+       success: function (response) {
+           shares = parseInt(response.shares);
+       }
+   });
 
   // registered Users
   $.ajax({
+    async: false,
     type: 'GET',
     url: 'http://www.hyve.me/usercount',
     dataType: 'json',
     success: function (response) {
-      $("#usercount").text(response);
+      users = parseInt(response);
     }
   });
 
@@ -348,16 +382,23 @@ $(function(){
   });
   
   // progress bar for shares
-  $.ajax({
-       type: 'GET',
-       url: 'https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F',
-       dataType: 'jsonp',
-       success: function (response) {
-           var mentions = response.shares;
-           $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
-           $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
-       }
-   });
+  if (typeof likes != 'number') {
+    likes = 0;
+  }
+  if (typeof tweets != 'number') {
+    tweets = 0;
+  }
+  if (typeof shares != 'number') {
+    shares = 0;
+  }
+  if (typeof users != 'number') {
+    users = 0;
+  }
+  var mentions = likes + tweets + shares + users;
+  $("#facebooklikes").text(likes);
+  $("#usercount").text(users);
+  $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
+  $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
 });
 </script>
 
