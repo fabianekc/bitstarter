@@ -349,6 +349,21 @@ $(function(){
     }
   });
 
+  // Hyve Users
+  $.ajax({
+    async: false,
+    type: 'GET',
+    url: 'http://www.hyve.me/usercount',
+    dataType: 'json',
+    success: function (response) {
+      users = parseInt(response);
+    },
+    error: function (a,b,c) {
+      users = 0;
+    }
+  });
+
+
   // Tweets
   $.ajax({
     type: 'GET',
@@ -364,21 +379,12 @@ $(function(){
        dataType: 'jsonp',
        success: function (response) {
          shares = parseInt(response["shares"]);
-         // Users
-         $.ajax({
-           type: 'GET',
-           url: 'http://www.hyve.me/usercount',
-           dataType: 'jsonp',
-           crossDomain: true,
-           success: function (response) {
-             users = parseInt(response);
-             // write values
-             var mentions = likes + tweets + shares + users;
-             $("#facebooklikes").text(likes);
-             $("#usercount").text(users);
-             $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
-             $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
-           } }); //user
+         // write values
+         var mentions = likes + tweets + shares + users;
+         $("#facebooklikes").text(likes);
+         $("#usercount").text(users);
+         $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
+         $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
        } }); //AddThis
     } }); // Tweets
 });
