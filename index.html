@@ -381,7 +381,17 @@ $(function(){
          shares = parseInt(response["shares"]);
          // write values
          var mentions = likes + tweets + shares + users;
-         $("#facebooklikes").text(likes);
+         var show = Math.floor(Math.random()*3);
+         if (show == 0) {
+           $("#socialnumber").text(likes);
+           document.getElementById('socialtext').innerHTML = "FB <i class='icon-thumbs-up'></i>";
+         } else if (show == 1) {
+           $("#socialnumber").text(tweets);
+           document.getElementById('socialtext').innerHTML = "<i class='icon-twitter'></i> Tweets";
+         } else {
+           $("#socialnumber").text(shares);
+           document.getElementById('socialtext').innerHTML = "<i class='icon-heart'></i> Shares";
+         }
          $("#usercount").text(users);
          $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
          $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
@@ -397,7 +407,7 @@ $(function(){
 
 <div class="span8 offset2">
   <div class="row-fluid statistics">
-    <div class="span4"><div class="linediv-l"><h3 id="facebooklikes">0</h3><p>FB <i class="icon-thumbs-up"></i></p></div></div>
+    <div class="span4"><div class="linediv-l"><h3 id="socialnumber">0</h3><p id="socialtext">social</p></div></div>
     <div class="span4"><div class="linediv-c"><h3 id="usercount">0</h3><p>Hyve-Users</p></div></div>
     <div class="span4"><div class="linediv-r"><h3 id="countdown">0</h3><p>days left</p></div></div>
   </div>
