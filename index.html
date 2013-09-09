@@ -328,6 +328,16 @@ $(function(){
   var shares;
   var users;
 
+  // days left
+  jQuery(document).ready(function($) {
+    today = new Date();
+    deadline = new Date("October 31, 2013");
+    msPerDay = 24 * 60 * 60 * 1000 ;
+    timeLeft = (deadline.getTime() - today.getTime());
+    $("#countdown").text(Math.floor(timeLeft / msPerDay));
+  });
+
+
   // Facebook Likes
   $.ajax({
     async: false,
@@ -341,64 +351,36 @@ $(function(){
 
   // Tweets
   $.ajax({
-    async: false,
     type: 'GET',
     url: 'http://urls.api.twitter.com/1/urls/count.json?url=www.hyve.me',
-    dataType: 'json',
+    dataType: 'jsonp',
     success: function (response) {
       tweets = parseInt(response["count"]);
-    }
-  });
 
-  // Shares from AddThis
-  $.ajax({
-       async: false,
+    // Shares from AddThis
+    $.ajax({
        type: 'GET',
        url: 'https://api-public.addthis.com/url/shares.json?url=http%3A%2F%2Fwww.hyve.me%2Fcrowdfunder%2F',
        dataType: 'jsonp',
        success: function (response) {
-           shares = parseInt(response.shares);
-       }
-   });
-
-  // registered Users
-  $.ajax({
-    async: false,
-    type: 'GET',
-    url: 'http://www.hyve.me/usercount',
-    dataType: 'json',
-    success: function (response) {
-      users = parseInt(response);
-    }
-  });
-
-  // days left
-  jQuery(document).ready(function($) {
-    today = new Date();
-    deadline = new Date("October 31, 2013");
-    msPerDay = 24 * 60 * 60 * 1000 ;
-    timeLeft = (deadline.getTime() - today.getTime());
-    $("#countdown").text(Math.floor(timeLeft / msPerDay));
-  });
-  
-  // progress bar for shares
-  if (typeof likes != 'number') {
-    likes = 0;
-  }
-  if (typeof tweets != 'number') {
-    tweets = 0;
-  }
-  if (typeof shares != 'number') {
-    shares = 0;
-  }
-  if (typeof users != 'number') {
-    users = 0;
-  }
-  var mentions = likes + tweets + shares + users;
-  $("#facebooklikes").text(likes);
-  $("#usercount").text(users);
-  $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
-  $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
+         shares = parseInt(response["shares"]);
+         // Users
+         $.ajax({
+           type: 'GET',
+           url: 'http://www.hyve.me/usercount',
+           dataType: 'jsonp',
+           crossDomain: true,
+           success: function (response) {
+             users = parseInt(response);
+             // write values
+             var mentions = likes + tweets + shares + users;
+             $("#facebooklikes").text(likes);
+             $("#usercount").text(users);
+             $("#myProgressBar_Success").css({ width: (mentions / 6) + "%" });
+             $("#myProgressBar_Warning").css({ width: ((600 - mentions) / 6) + "%" });
+           } }); //user
+       } }); //AddThis
+    } }); // Tweets
 });
 </script>
 
